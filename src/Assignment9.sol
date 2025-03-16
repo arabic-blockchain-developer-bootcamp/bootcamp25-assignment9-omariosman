@@ -2,13 +2,15 @@
 pragma solidity ^0.8.13;
 
 // import Openzeppelin Ownable contract
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 // inherit from Ownable contract 
-contract Assignment9 {
+contract Assignment9 is Ownable {
     // create a public array called `deployedContracts` to store contracts addresses in it 
+    address[] public deployedContracts;
 
     // call Ownable constructor of openzeppelin contract
-    constructor () {
+    constructor () Ownable(msg.sender) {
         
     }
 
@@ -17,9 +19,10 @@ contract Assignment9 {
     function createContract() external {
         // deploy new instance of SimpleContract
             // Hint: When you create a new instance, do not forget to pass any arbitrary initial value in the constructor
-        
+        SimpleContract simpleContract = new SimpleContract(100);
 
         // push the new deployed instance to deployedContracts array
+        deployedContracts.push(simpleContract);
     }
 }
 
