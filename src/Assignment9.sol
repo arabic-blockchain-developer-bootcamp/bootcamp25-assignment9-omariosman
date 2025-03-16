@@ -22,7 +22,7 @@ contract Assignment9 is Ownable {
         SimpleContract simpleContract = new SimpleContract(100);
 
         // push the new deployed instance to deployedContracts array
-        deployedContracts.push(simpleContract);
+        deployedContracts.push(address(simpleContract));
     }
 }
 
